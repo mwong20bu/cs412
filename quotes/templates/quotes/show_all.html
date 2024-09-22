@@ -1,0 +1,33 @@
+<!-- hw/templates/hw/about.html -->
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+        <h1>All Quotes and Images</h1>
+        <h3>Here are all the quotes and images used in this web app.</h3>
+        <p>
+            Quotes:
+            <ul>
+                <li>{{quote0}}</li>
+                <li>{{quote1}}</li>
+                <li>{{quote2}}</li>
+                <li>{{quote3}}</li>
+                <li>{{quote4}}</li>
+                <li>{{quote5}}</li>
+                <li>{{quote6}}</li>
+                <li>{{quote7}}</li>
+                <li>{{quote8}}</li>
+            </ul>
+            <br>
+            Images:
+            <ul></ul>
+                <li><img src={{image0}} alt="Some of Murakami's works" width="300" height="auto"></li>
+                <li><img src={{image1}} alt="Photo of Murakami" width="300" height="auto"></li>
+                <li><img src={{image2}} alt="Black and white photo of Murakami" width="300" height="auto"></li>
+            </ul>
+        </p>
+
+
+
+
+        
+{% endblock %}

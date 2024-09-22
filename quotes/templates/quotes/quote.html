@@ -1,0 +1,14 @@
+<!-- hw/templates/hw/about.html -->
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+        <h1>Haruki Murakami Quote of the Day</h1>
+        <p>
+            <strong>Quote of the Day: </strong>"{{selected_quote}}"
+            <br><br>
+            <strong>Image of the Day: </strong>
+            <br>
+            <img src={{selected_image}} alt="Image goes here" width="300" height="auto">
+        </p>
+
+{% endblock %}

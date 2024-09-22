@@ -8,4 +8,5 @@ from . import views #from this local directory, import views (which refers to vi
 # create a list of URLs for this app:
 urlpatterns = [
     path(r'', views.home, name="home"), ##our first URL
+    path(r'about', views.about, name="about"), ## new 
 ]

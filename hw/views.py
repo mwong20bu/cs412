@@ -43,3 +43,20 @@ def home(request):
 
     # delegate response to the template:
     return render(request, template_name, context) #request is the parameter passed into home function above
+
+
+def about(request):
+    '''
+    A function to respond to the /hw/about URL.
+    This function will delegate work to an HTML template.
+    '''
+    # this template will present the response
+    template_name = "hw/about.html"
+
+    # create a dictionary of context variables
+    context = {
+        'current_time': time.ctime(),
+    }
+
+    # delegate response to the template:
+    return render(request, template_name, context)
