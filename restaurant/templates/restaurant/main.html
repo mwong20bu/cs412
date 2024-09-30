@@ -1,0 +1,20 @@
+<!-- restaurant/templates/restaurant/about.html -->
+{% extends 'restaurant/base.html' %}
+
+{% block content %}
+        <h1>Cuihua Kitchen</h1>
+        <p> Welcome to the ordering page for Cuihua Kitchen! Located in Bensonhurst, Brooklyn, 
+            Cuihua Kitchen's opening hours are as follows: 
+            <ul>
+                <li>Sunday & Saturday: 7am - 8pm</li>
+                <li>Monday - Friday: 8am - 8pm</li>
+            </ul>
+            <img src={{cuihua_img}} alt="Image of Cuihua Kitchen" width="300" height="auto" id="mainImg"> <br>
+            <div class="img_container">
+                <img src={{menu_img}} alt="Image of Cuihua Kitchen dishes" width="auto" height="150">
+                <img src={{dimsum_img}} alt="Image of Cuihua Kitchen dimsum" width="auto" height="150">
+            </div>
+            
+        </p>
+
+{% endblock %}

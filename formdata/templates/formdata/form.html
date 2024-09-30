@@ -1,0 +1,21 @@
+<!-- formdata/templates/formdata/form.html-->
+{% extends 'formdata/base.html' %}
+
+{% block content %}
+<div>
+    <h1>Contact Form</h1>
+    <!-- note: if form action left blank, it submits data to same url that it was collected from -->
+    <form action="{% url 'submit' %}"> 
+
+        <!--CSRF token will be used to verify the authenticity of this form so that we cannot submit a form that wasn't 
+        geenerated by this app --> 
+        {% csrf_token%}
+
+        Name: <input type="text" name="name">
+        Favorite Color: <input type="favorite_color">
+        <input type="submit">
+
+    </form>
+</div>
+
+{% endblock %}

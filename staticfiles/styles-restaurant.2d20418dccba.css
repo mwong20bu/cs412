@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(250, 232, 201);
+    color: rgb(197, 41, 41);
+    font-family: Arial, Helvetica, sans-serif, "Times New Roman", Times, serif;
+}
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #c90a0a;
+}
+  
+nav li {
+    float: left;
+}
+  
+nav a {
+    float: left;
+    display: block;
+    color: rgb(255, 229, 30);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#mainImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img_container {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    padding: 3px;
+}

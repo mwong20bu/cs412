@@ -1,0 +1,28 @@
+
+<!--restaurant/templates/restaurant/base.html
+This is base page from which all other pages will inherit. Put common code here, specific code in separate pages-->
+
+{% load static %}
+<html>
+    <head>
+        <title>Restaurant Name Goes Here </title>
+        <!-- Change name of the stylesheet once you make it -->
+        <link rel="stylesheet" href="{% static 'styles-restaurant.css' %}">
+    </head>
+    <body>
+        
+        <nav>
+            <ul>
+                <a href="{% url 'main' %}">Main Page</a>
+                <a href="{% url 'order' %}">Order</a>
+            </ul>
+        </nav>
+
+       {% block content %}
+       <!-- put the interesting (specific stuff) here-->
+       {% endblock %} 
+       
+       <hr>
+
+       </body>
+   </html>
