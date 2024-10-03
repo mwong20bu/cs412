@@ -1,0 +1,24 @@
+<!-- blog/templates/blog/show_all.html-->
+{% extends 'blog/base.html' %}
+
+{% block content%}
+<h1>Showing all articles</h1>
+
+<!--{{articles}}-->
+
+<main class="grid.container">
+    <!-- looping through list of articles -->
+    {% for a in articles %} 
+    <article>
+        <!--refering to attributes of article-->
+        <h2>{{a.title}}</h2>
+        <h3>by {{a.author}} at {{a.published}}</h3>
+        <img src="{{a.image_url}}" alt="{{a.image_url}}" width="200">
+        <p>
+            {{a.text}}
+        </p>
+    </article>
+    {% endfor %}
+</main>
+
+{% endblock %}

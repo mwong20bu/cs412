@@ -1,0 +1,23 @@
+<!-- mini_fb/templats/blog/show_all_profiles.html -->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<h2>Showing all Profiles</h2>
+
+<main class="grid-container"> <!-- was <div> -->
+    {% for p in profiles %}
+    <profile> <!-- was <div> -->
+        <div> <!-- added this! -->
+            <img src="{{p.profile_image_url}}" alt="{{p.profile_image_url}}">
+            <p>
+                <strong>{{p.first_name}} {{p.last_name}}</strong> <br>
+                {{p.city}}
+            </p>       
+        </div> <!-- added this! -->
+ 
+    </profile> <!-- was <div> -->
+    {% endfor %}
+</main> <!-- was <div> -->
+
+{% endblock %}
