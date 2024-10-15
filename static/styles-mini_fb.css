@@ -2,13 +2,30 @@
 
 body {
     margin: 30px;
-    background: #d1d6de;
+    background: #a0b2cf;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-ul, li {
-    padding: 0px;
+nav ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0c017f;
+}
+
+nav li {
+    float: left;
+    list-style-type: none;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 h1 {
@@ -23,8 +40,8 @@ p {
     color: #0e322e;
 }
 
-strong {
-    color: darkblue;
+a {
+    text-decoration: none;
 }
 
 header {
@@ -36,7 +53,7 @@ header {
     background: #eee;
     max-width: 900px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
      grid-gap: 10px;
     max-width: 1200px;
     margin: 15px auto;
@@ -50,9 +67,24 @@ profile img {
     border-radius: 8px;
 }
 
-profile p, profile h3 {
+.big_img {
+    width: 300; 
+    height: 350;
+    object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
+    border: 4px solid #fff;
+    border-radius: 8px;
+    
+}
+profile p, profile h3, profile h2, profile strong {
     margin: 10px 10px;
 
+}
+
+#status_add {
+    text-decoration: none;
+    background-color: #0c017f;
+    color: #e6efff;
+    padding: 2px 6px;
 }
 
 nav li {

@@ -11,6 +11,13 @@
             <h1>Blog</h1>
         </header>
     
+        <nav>
+            <ul>
+                <!-- use the scriptlet URL function to look up a URL by name -->
+                <a href="{% url 'show_all' %}">Show All</a>
+                <a href="{% url 'random' %}">Random</a>
+            </ul>
+        </nav>
     {% block content %}
     {% endblock %}    
   

@@ -14,3 +14,16 @@ class Article(models.Model):
     def __str__(self):
         '''Return a string representation of this Article object, changes how articles are listed/named in admin interface'''
         return f'{self.title} by {self.author}'
+    
+class Comment(models.Model):
+    '''Encapsulate a comment on an article.'''
+
+    # create a 1 to many relationship between Articles and Comments
+    article = models.ForeignKey("Article", on_delete=models.CASCADE) ### IMPORTANT
+    author = models.TextField(blank=False)
+    text = models.TextField(blank=False)
+    published = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        '''Return a string representation of this object.'''
+        return f'{self.text}'

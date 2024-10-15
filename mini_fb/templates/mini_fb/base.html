@@ -4,12 +4,19 @@
 <html>
     <head>
         <title>MiniFacebook</title>
-        <link rel="stylesheet" href="{% static 'styles-mini_fb.css' %}">
+        <link rel="stylesheet" href="{% static 'styles-mini_fb.css'%}">
     </head>
     <body>
         <header>
             <h1>MiniFacebook</h1>
         </header>
+        <nav>
+            <ul>
+                <!-- use the scriptlet URL function to look up a URL by name -->
+                <a href="{% url 'show_all_profiles' %}">Home Page</a>
+                <a href="{% url 'create_profile' %}">Create a Profile</a>
+            </ul>
+        </nav>
     
     {% block content %}
     {% endblock %}    

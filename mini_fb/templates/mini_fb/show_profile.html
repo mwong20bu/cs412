@@ -1,0 +1,50 @@
+<!-- mini_fb/templates/mini_fb/show_profile-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<h1>{{profile.first_name}} {{profile.last_name}}</h1>
+
+<main> <!-- was <div> -->
+    <profile> <!-- was <div> -->
+        <div class="grid-container">
+            <div class="image_container">
+                <img class="big_img" src="{{profile.profile_image_url}}" alt="{{profile.profile_image_url}}">
+            </div>
+
+            <div class="text_container">
+                <div>
+                    <h3>{{profile.city}}</h2>
+                    <h3>{{profile.email_address}}</h3>
+                </div> 
+
+                <!-- To display status messages: -->
+                <div>
+                    {% if profile.get_status_message %}
+                        <h2>Status Messages</h2>
+                        <!-- call the Profile's get_status_message() method -->
+                    
+                        {% for s in profile.get_status_message %}
+                        <div>
+                            <strong>At {{s.timestamp}} : </strong>
+                            <p>
+                                {{s.message}}
+                            </p>
+            
+                        </div>
+                        {% endfor %}
+            
+                    {% else %}
+                        <div>
+                            <h2>No Status Messages</h2>
+                        </div>
+                    {% endif %}
+                    <h3><a id="status_add" href="{% url 'create_status' profile.pk %}">Add a Status Message</a></h3>
+                </div>
+            </div>
+        </div>
+    </profile> <!-- was <div> -->
+</main>
+
+
+{% endblock %}

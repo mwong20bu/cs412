@@ -2,7 +2,7 @@
 
 body {
     margin: 30px;
-    background: #d1dedd;
+    background: #bf0000;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -11,12 +11,20 @@ ul, li {
     list-style-type: none;
 }
 
-h1, h2, h3 {
-    color: #767f7e;
+h1 {
+    color: rgb(228, 0, 0);
+}
+
+h2, h3 {
+    color: #001243;
 }
 
 p {
-    color: #828b82;
+    color: #0e322e;
+}
+
+strong {
+    color: darkblue;
 }
 
 header {
@@ -28,15 +36,30 @@ header {
     background: #eee;
     max-width: 900px;
     display: grid;
-    /* grid-template-columns: 300px 300px 300px; */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
      grid-gap: 10px;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 15px auto;
+}
+
+profile img {
+    width: 175;
+    height: 200;
+    object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
+    border: 4px solid #fff;
+    border-radius: 8px;
+}
+
+.big_img {
+    width: 300; 
+    height: 350;
+    object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
+    border: 4px solid #fff;
+    border-radius: 8px;
 }
 
 profile p, profile h3 {
-    margin: 20px 10px;
+    margin: 10px 10px;
 
 }
 
@@ -50,7 +73,7 @@ nav li {
         grid-column: span 3;
         display: grid; /* nested grid */
         grid-template-columns: 1fr 1fr;
-        gap: 60px;
+        gap: 30px;
         align-items: center;
     }
 }

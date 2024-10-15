@@ -11,7 +11,7 @@
         <div> <!-- added this! -->
             <img src="{{p.profile_image_url}}" alt="{{p.profile_image_url}}">
             <p>
-                <strong>{{p.first_name}} {{p.last_name}}</strong> <br>
+                <h3><a href="{% url 'profile' p.pk %}">{{p.first_name}} {{p.last_name}}</a></h3>
                 {{p.city}}
             </p>       
         </div> <!-- added this! -->
