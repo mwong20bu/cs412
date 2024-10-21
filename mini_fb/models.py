@@ -24,7 +24,8 @@ class Profile(models.Model):
         # use the ORM to filter StatusMessages where this 
         # instance of Profile is the FK
         status_messages = StatusMessage.objects.filter(profile=self)
-        status_messages = status_messages.order_by('-timestamp').values()
+        status_messages = status_messages.order_by('-timestamp')
+        # status_messages = status_messages.order_by('-timestamp').values()
         return status_messages
     
     def get_absolute_url(self) -> str:
@@ -44,3 +45,22 @@ class StatusMessage(models.Model):
     def __str__(self):
         '''Return a string representation of the status message object'''
         return f'{self.profile} {self.timestamp}'
+    
+    def get_image(self): 
+        '''Retrieve all images for this StatusMessage.'''
+        # use the ORM to filter Images where this 
+        # instance of StatusMessage is the FK
+        images = Image.objects.filter(status=self)
+        #print('debug', images)
+        return images
+    
+class Image(models.Model): 
+    '''Encapsulate the data attributes for an image file'''
+    #Data attributes
+    timestamp = models.DateTimeField(auto_now=True)
+    status = models.ForeignKey("StatusMessage", on_delete=models.CASCADE)
+    image_file = models.ImageField(blank=True)
+
+    def __str__(self):
+        '''Return a string representation of the Image object'''
+        return f'{self.status} {self.image_file}'

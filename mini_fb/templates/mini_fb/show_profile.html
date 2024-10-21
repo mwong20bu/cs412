@@ -28,9 +28,19 @@
                         <div>
                             <strong>At {{s.timestamp}} : </strong>
                             <p>
+                                <!--{{ s }} was used for debugging-->
                                 {{s.message}}
                             </p>
-            
+                            {% if s.get_image %}
+                                
+                                {% for i in s.get_image %}
+                                    <img src='{{i.image_file.url}}' alt='{{i.image_file.url}}'>
+                                {% endfor %}
+                            
+                            {% else %}
+                                <br>
+                            {% endif %}
+                                <br>
                         </div>
                         {% endfor %}
             
