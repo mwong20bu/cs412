@@ -7,7 +7,7 @@
 
 <main> <!-- was <div> -->
     <profile> <!-- was <div> -->
-        <div class="grid-container">
+        <div class="grid-container-profile-display">
             <div class="image_container">
                 <img class="big_img" src="{{profile.profile_image_url}}" alt="{{profile.profile_image_url}}">
             </div>
@@ -16,6 +16,9 @@
                 <div>
                     <h3>{{profile.city}}</h2>
                     <h3>{{profile.email_address}}</h3>
+
+                    <h3><a class="big_button" href="{% url 'create_status' profile.pk %}">Add a Status Message</a>
+                    <a class="big_button" href="{% url 'update_profile' profile.pk %}">Update Profile</a></h3>
                 </div> 
 
                 <!-- To display status messages: -->
@@ -36,14 +39,11 @@
                                 {% for i in s.get_image %}
                                     <img src='{{i.image_file.url}}' alt='{{i.image_file.url}}'>
                                 {% endfor %}
-                            
-                            {% else %}
-                                <br>
                             {% endif %}
-                                <br>
-                            <a class="status_button" href="{% url 'delete_status' s.pk %}">Delete</a>
-                            <a class="status_button" href="{% url 'update_status' s.pk %}">Update</a>
+                            <p><a class="status_button" href="{% url 'delete_status' s.pk %}">Delete</a>
+                            <a class="status_button" href="{% url 'update_status' s.pk %}">Update</a></p>
                         </div>
+                        <br>
                         {% endfor %}
             
                     {% else %}
@@ -51,8 +51,6 @@
                             <h2>No Status Messages</h2>
                         </div>
                     {% endif %}
-                    <h3><a id="status_add" href="{% url 'create_status' profile.pk %}">Add a Status Message</a></h3>
-                    <h3><a id="update_profile" href="{% url 'update_profile' profile.pk %}">Update Profile</a></h3>
                 </div>
             </div>
         </div>

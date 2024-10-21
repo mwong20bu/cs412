@@ -53,11 +53,22 @@ header {
     background: #eee;
     max-width: 900px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
      grid-gap: 10px;
     max-width: 1200px;
     margin: 15px auto;
 }
+.grid-container-profile-display {
+    background: #eee;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+     grid-gap: 10px;
+    max-width: 1200px;
+    margin: 15px auto;
+    place-items: center;
+}
+
 
 profile img {
     width: 175;
@@ -68,23 +79,32 @@ profile img {
 }
 
 .big_img {
-    width: 300; 
-    height: 350;
+    width: auto; 
+    height: 70vh;
     object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
     border: 4px solid #fff;
     border-radius: 8px;
-    
 }
 profile p, profile h3, profile h2, profile strong {
     margin: 10px 10px;
 
 }
 
-#status_add {
+.big_button{
     text-decoration: none;
     background-color: #0c017f;
     color: #e6efff;
     padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.status_button{
+    text-decoration: none;
+    background-color: #0f02a1;
+    color: #e6efff;
+    padding: 1px 3px;
+    border-radius: 3px;
+    margin: 10px 0px;
 }
 
 nav li {
