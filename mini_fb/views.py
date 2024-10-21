@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from . models import *
 from . forms import *
-from django.views.generic import ListView, DetailView, CreateView#generic view
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView #generic view
 
 # Create your views here.
 
@@ -55,14 +55,35 @@ class CreateStatusMessageView(CreateView):
         for file in files: 
             image = Image.objects.create(status=sm, image_file=file)
             #print('made image')
-        image.save()
+            image.save()
 
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('profile', kwargs=self.kwargs)
 
+class UpdateProfileView(UpdateView): 
+    '''A view to show form used to update profile information'''
+    model = Profile
+    form_class = UpdateProfileForm
+    template_name = 'mini_fb/update_profile_form.html'
 
+class DeleteStatusMessageView(DeleteView):
+    model = StatusMessage
+    template_name = 'mini_fb/delete_status_form.html'
+    context_object_name = 'status'
+    
+    def get_success_url(self):
+        #print(self.object.profile.get_absolute_url())
+        return self.object.profile.get_absolute_url()
 
+class UpdateStatusMessageView(UpdateView): 
+    '''A view to show form used to update status message information'''
+    model = StatusMessage
+    form_class = UpdateStatusMessageForm
+    template_name = 'mini_fb/update_status_form.html'
 
+    def get_success_url(self):
+        #print(self.object.profile.get_absolute_url())
+        return self.object.profile.get_absolute_url()
     

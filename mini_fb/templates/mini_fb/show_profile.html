@@ -41,6 +41,8 @@
                                 <br>
                             {% endif %}
                                 <br>
+                            <a class="status_button" href="{% url 'delete_status' s.pk %}">Delete</a>
+                            <a class="status_button" href="{% url 'update_status' s.pk %}">Update</a>
                         </div>
                         {% endfor %}
             
@@ -50,6 +52,7 @@
                         </div>
                     {% endif %}
                     <h3><a id="status_add" href="{% url 'create_status' profile.pk %}">Add a Status Message</a></h3>
+                    <h3><a id="update_profile" href="{% url 'update_profile' profile.pk %}">Update Profile</a></h3>
                 </div>
             </div>
         </div>
