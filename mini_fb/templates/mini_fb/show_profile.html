@@ -54,6 +54,18 @@
                 </div>
             </div>
         </div>
+        <br>
+        <!-- To display friends -->
+        <h3> {{profile.first_name}}'s Friends:</h3>
+            <div class="grid-container">
+                {% for fp in profile.get_friends %}
+                    <profile>
+                        <a href="{%url 'profile' fp.pk %}">{{fp}}</a>
+                        <img src="{{fp.profile_image_url}}" alt="Image of {{fp}}"><br>
+                    </profile>
+                {% endfor %}
+            </div>
+        <a class="big_button" href="{%url 'show_friend_suggestions' profile.pk %}">Show Friend Suggestions</a>
     </profile> <!-- was <div> -->
 </main>
 

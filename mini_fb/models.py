@@ -34,6 +34,38 @@ class Profile(models.Model):
         #return reverse("show_all")
         return reverse("profile", kwargs={ "pk": self.pk })
     
+    def get_friends(self): 
+        friends = Friend.objects.filter(profile1=self) | Friend.objects.filter(profile2=self)
+        friends_prof = []
+        for f in friends: 
+            if f.profile1 == self: 
+                friends_prof.append(f.profile2)
+            else: 
+                friends_prof.append(f.profile1)
+        return friends_prof
+    
+    def add_friend(self, other):
+        my_friends = self.get_friends()
+        if other not in my_friends: 
+            friendship = Friend.objects.create(profile1=self, profile2=other)
+            friendship.save()
+            #print("friendship added between", self, other)
+        return 
+
+    def get_friend_suggestions(self):
+        my_friends = self.get_friends()
+        print("my current friends:", my_friends)
+        potentials = []
+        for person in my_friends: 
+            print(person)
+            their_friends = person.get_friends()
+            print("their friends:", their_friends)
+            for p in their_friends: 
+                if (p not in potentials) and (p != self): 
+                    potentials.append(p)
+        return potentials
+        
+    
 class StatusMessage(models.Model):
     '''Encapsulate the data attributes for a facebook status message'''
 
@@ -64,3 +96,15 @@ class Image(models.Model):
     def __str__(self):
         '''Return a string representation of the Image object'''
         return f'{self.status} {self.image_file}'
+
+class Friend(models.Model):
+    '''Encapsulate the data attributes for a friend relationship between two Profiles'''
+    timestamp = models.DateTimeField(auto_now=True)
+    profile1 = models.ForeignKey("Profile", related_name="friendA", on_delete=models.CASCADE)
+    profile2 = models.ForeignKey("Profile", related_name="friendB", on_delete=models.CASCADE)
+
+    def __str__(self): 
+        '''Returns a string representation of the Friend relationship'''
+        p1 = self.profile1
+        p2 = self.profile2
+        return f'{p1.first_name} {p1.last_name} & {p2.first_name} {p2.last_name}'

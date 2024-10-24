@@ -3,7 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 from . models import *
 from . forms import *
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView #generic view
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View #generic view
+from django.shortcuts import redirect
 
 # Create your views here.
 
@@ -31,7 +32,7 @@ class CreateProfileView(CreateView):
 
     def get_absolute_url(self):
         '''Get the URL to show this Profile.'''
-        return reverse('show_profile', pk=self.kwargs['pk'])
+        return reverse('profile', pk=self.kwargs['pk'])
     
 class CreateStatusMessageView(CreateView):
     '''A view to show the CreateProfile form'''
@@ -86,4 +87,26 @@ class UpdateStatusMessageView(UpdateView):
     def get_success_url(self):
         #print(self.object.profile.get_absolute_url())
         return self.object.profile.get_absolute_url()
+    
+class CreateFriendView(View):
+    '''A view to handle adding a friend to a profile '''
+    def dispatch(self, request, *args, **kwargs):
+        p1_pk = self.kwargs['pk']
+        #print(p1_pk)
+        p2_pk = self.kwargs['other_pk']
+        #print(p2_pk)
+        p1 = Profile.objects.get(pk=p1_pk)
+        p2 = Profile.objects.get(pk=p2_pk)
+        p1.add_friend(p2)
+
+        #return super().dispatch(request, *args, **kwargs)
+        kw_dict = {'pk': self.kwargs['pk']}
+        url = reverse('profile', kwargs=kw_dict)
+        return redirect(url)
+
+class ShowFriendSuggestionsView(DetailView):
+    '''A view to display suggested friends for a Profile'''
+    template_name = 'mini_fb/friend_suggestions.html'
+    model = Profile
+    context_object_name = 'profile'
     

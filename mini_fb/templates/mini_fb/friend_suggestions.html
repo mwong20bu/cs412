@@ -1,0 +1,19 @@
+{% extends 'mini_fb/base.html' %}
+
+{% block content%}
+<div>
+    <h1>People {{profile.first_name}} {{profile.last_name}} may know: </h1>
+    <div class="grid-container">
+    {% for p in profile.get_friend_suggestions %}
+        <div>
+            <a class="add_button" href="{% url 'create_friend' profile.pk p.pk%}">Add Friend</a> <br>
+                <profile>
+                    <img src="{{p.profile_image_url}}" alt="Image of {{fp}}"><br>
+                    <a href="{%url 'profile' p.pk %}">{{p}}</a><br>
+                </profile>
+        </div>
+    {% endfor %}
+    </div>
+    <a class="big_button" href="{% url 'profile' profile.pk%}"> Back to {{profile}}'s Page</a>
+</div>
+{% endblock %}

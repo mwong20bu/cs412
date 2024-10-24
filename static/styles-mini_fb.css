@@ -107,9 +107,18 @@ profile p, profile h3, profile h2, profile strong {
     margin: 10px 0px;
 }
 
+.add_button{
+    text-decoration: none;
+    background-color: #0f02a1;
+    color: #e6efff;
+    padding: 1px 2px;
+    border-radius: 3px;
+}
+
 nav li {
     display: inline;
 }
+
 /* responsive styles: adapt to smaller screen sizes */
 @media screen and (max-width: 980px) {
 
