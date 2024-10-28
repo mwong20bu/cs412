@@ -115,6 +115,28 @@ profile p, profile h3, profile h2, profile strong {
     border-radius: 3px;
 }
 
+
+.feed {
+    background: #eee;
+}
+
+.feed_pfp {
+    width: 100;
+    height: 125;
+    object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
+    border: 4px solid #fff;
+    border-radius: 8px;
+}
+
+.feed img {
+    width: 175;
+    height: 200;
+    object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
+    border: 4px solid #fff;
+    border-radius: 8px;
+}
+
+
 nav li {
     display: inline;
 }

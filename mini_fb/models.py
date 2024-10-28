@@ -35,6 +35,7 @@ class Profile(models.Model):
         return reverse("profile", kwargs={ "pk": self.pk })
     
     def get_friends(self): 
+        '''Returns a list of Profiles containing all the friends of this Profile'''
         friends = Friend.objects.filter(profile1=self) | Friend.objects.filter(profile2=self)
         friends_prof = []
         for f in friends: 
@@ -45,6 +46,7 @@ class Profile(models.Model):
         return friends_prof
     
     def add_friend(self, other):
+        '''Creates a Friend relationship between self and other Profile'''
         my_friends = self.get_friends()
         if other not in my_friends: 
             friendship = Friend.objects.create(profile1=self, profile2=other)
@@ -53,18 +55,28 @@ class Profile(models.Model):
         return 
 
     def get_friend_suggestions(self):
+        '''gets list of unadded friends of current profile's friends'''
         my_friends = self.get_friends()
-        print("my current friends:", my_friends)
+        #print("my current friends:", my_friends)
         potentials = []
-        for person in my_friends: 
-            print(person)
-            their_friends = person.get_friends()
-            print("their friends:", their_friends)
-            for p in their_friends: 
-                if (p not in potentials) and (p != self): 
-                    potentials.append(p)
+        #for person in my_friends: 
+        for person in Profile.objects.all():
+            if (person not in my_friends) and (person != self):
+                potentials.append(person)
+            #print(person)
+            #their_friends = person.get_friends()
+            #print("their friends:", their_friends)
+            #for p in their_friends: 
+            #    if (p not in potentials) and (p != self): 
+            #        potentials.append(p)
         return potentials
         
+    def get_news_feed(self): 
+        '''Retrieve a QuerySet of the StatusMessages of self and self's friends'''
+        friends = self.get_friends()
+        friends.append(self)
+        feed = StatusMessage.objects.filter(profile__in=friends).order_by('-timestamp')
+        return feed
     
 class StatusMessage(models.Model):
     '''Encapsulate the data attributes for a facebook status message'''

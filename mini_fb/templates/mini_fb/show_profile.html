@@ -66,6 +66,7 @@
                 {% endfor %}
             </div>
         <a class="big_button" href="{%url 'show_friend_suggestions' profile.pk %}">Show Friend Suggestions</a>
+        <a class="big_button" href="{% url 'show_news' profile.pk%}"> {{profile}}'s News Feed</a>
     </profile> <!-- was <div> -->
 </main>
 

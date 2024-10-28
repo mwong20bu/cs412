@@ -1,0 +1,24 @@
+<!-- mini_fb/templates/mini_fb/news_feed.html-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content%}
+<body>
+    <div class="feed">
+        <h2>{{profile}}'s News Feed</h2>
+        <a class="big_button" href="{% url 'profile' profile.pk%}"> Back to {{profile}}'s Page</a>
+        <hr>
+        {% for sm in profile.get_news_feed %}
+            <img class="feed_pfp" src="{{sm.profile.profile_image_url}}" alt="{{sm.profile}}'s profile image">
+            <p> <strong> {{sm }}</strong></p>
+            <p>{{sm.message}}</p>
+            {% if sm.get_image %}
+                {% for i in sm.get_image %}
+                    <img src='{{i.image_file.url}}' alt='{{i.image_file.url}}'>
+                {% endfor %}
+            {% endif %}
+            <hr>
+
+        {% endfor %}
+    </div>
+</body>
+{% endblock %}
