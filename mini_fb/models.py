@@ -1,11 +1,14 @@
 from django.db import models
 from django.shortcuts import render
 from django.urls import reverse
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
     '''Encapsulate the data for a mini_fb profile'''
+
+    #Adding a foreign key to User model 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     #Data attributes 
     first_name = models.TextField(blank=False) #blank=False means you can't create an article without a title

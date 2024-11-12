@@ -1,0 +1,56 @@
+<!-- templates/voter_analytics/voter_detail.html -->
+{% extends 'voter_analytics/base.html' %}
+{% block content %}
+<div class="container">
+    <h1>Showing Result for {{v.first_name}} {{v.last_name}}</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Zipcode</th>
+            <th>Date of Birth</th>
+            <th>Date of Registration</th>
+            <th>Party</th>
+            <th>Precinct Number</th>
+            <th>Voted in 2020 State Election</th>
+            <th>Voted in 2021 Town Election</th>
+            <th>Voted in 2021 Primary Election</th>
+            <th>Voted in 2022 General Election</th>
+            <th>Voted in 2023 Town Election</th>
+            <th>Voter Score</th>
+        </tr>
+        
+        <tr>
+            <td>{{v.first_name}} {{v.last_name}}</td>
+            {% if v.apt_num%}
+                <td>{{v.street_num}} {{v.street_name}} Apt {{v.apt_num}}</td>
+            {% else %}
+                <td>{{v.street_num}} {{v.street_name}}</td>
+            {% endif %}
+            <td>{{v.zipcode}}</td>
+            <td>{{v.dob}}</td>
+            <td>{{v.date_of_registration}}</td>
+            <td>{{v.party}}</td>
+            <td>{{v.precinct_num}}</td>
+            <td>{{v.v20state}}</td>
+            <td>{{v.v21town}}</td>
+            <td>{{v.v21primary}}</td>
+            <td>{{v.v22general}}</td>
+            <td>{{v.v23town}}</td>
+            <td>{{v.voter_score}}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- link to google maps for address -->
+<div class="row">
+    <p>Link to map for {{v.first_name}} {{v.last_name}}'s residence: 
+    {% if v.apt_num %}
+        <a href="https://www.google.com/maps/search/?api=1&query={{v.street_num}}+{{v.street_name}}%20+Apt+{{v.apt_num}}+Newton%20+MA">Google Maps Link</a>
+    {% else %}
+        <a href="https://www.google.com/maps/search/?api=1&query={{v.street_num}}+{{v.street_name}}+Newton%20+MA">Google Maps Link</a>
+    {% endif %}
+    </p>
+</div>
+ 
+{% endblock %}

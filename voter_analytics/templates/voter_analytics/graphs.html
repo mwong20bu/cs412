@@ -1,0 +1,28 @@
+{% extends 'voter_analytics/base.html' %}
+{% block content %}
+
+<h2>Graphs</h2>
+<div class="container">
+    <div class="row">
+        <!--importing HTML from another file -->
+        {% include 'voter_analytics/search_graph.html' %}
+    </div>
+
+    <div>
+        <h3>Voter Distribution by Year of Birth</h3>
+        {{graph_dob_div|safe}} <!--the safe descriptor makes it render the code -->
+    </div>
+
+    <div>
+        <h3>Voter Distribution by Party Affiliation</h3>
+        {{graph_party_div|safe}} <!--the safe descriptor makes it render the code -->
+    </div>
+
+
+    <div>
+        <h3>Vote Count by Election</h3>
+        {{graph_voting_hist_div|safe}} <!--the safe descriptor makes it render the code -->
+    </div>
+</div>
+
+{% endblock %}

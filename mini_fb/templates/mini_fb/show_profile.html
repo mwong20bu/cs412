@@ -16,9 +16,11 @@
                 <div>
                     <h3>{{profile.city}}</h2>
                     <h3>{{profile.email_address}}</h3>
-
+                    
+                    {% if request.user == profile.user %}
                     <h3><a class="big_button" href="{% url 'create_status' profile.pk %}">Add a Status Message</a>
                     <a class="big_button" href="{% url 'update_profile' profile.pk %}">Update Profile</a></h3>
+                    {% endif %}
                 </div> 
 
                 <!-- To display status messages: -->
@@ -40,8 +42,10 @@
                                     <img src='{{i.image_file.url}}' alt='{{i.image_file.url}}'>
                                 {% endfor %}
                             {% endif %}
+                            {% if request.user == profile.user %}
                             <p><a class="status_button" href="{% url 'delete_status' s.pk %}">Delete</a>
                             <a class="status_button" href="{% url 'update_status' s.pk %}">Update</a></p>
+                            {% endif %}
                         </div>
                         <br>
                         {% endfor %}
@@ -65,8 +69,10 @@
                     </profile>
                 {% endfor %}
             </div>
+        {% if request.user == profile.user %}
         <a class="big_button" href="{%url 'show_friend_suggestions' profile.pk %}">Show Friend Suggestions</a>
         <a class="big_button" href="{% url 'show_news' profile.pk%}"> {{profile}}'s News Feed</a>
+        {% endif %}
     </profile> <!-- was <div> -->
 </main>
 

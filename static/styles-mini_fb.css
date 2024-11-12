@@ -136,6 +136,17 @@ profile p, profile h3, profile h2, profile strong {
     border-radius: 8px;
 }
 
+.logout {
+    float: left;
+    display: block;
+    color: rgb(255, 255, 255);
+    background-color: #0c017f;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: none; 
+    font-size: 1rem;
+}
 
 nav li {
     display: inline;
