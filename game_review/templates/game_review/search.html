@@ -1,0 +1,53 @@
+<!-- game_review/templates/game_review/search.html -->
+<!-- template for search form, to filter VideoGame objects. Instead of extending base, this form will be imported into search_games.html-->
+
+<form action="{% url 'search_game' %}">
+<table>
+    <!-- option to filter games by title -->
+    <tr>
+        <th>Name:</th>
+        <td>
+            <input type="text" name="title">
+        </td>
+    </tr>
+
+    <!-- option to filter games by genre -->
+    <tr>
+        <th>Genre:</th>
+        <td>
+            <select name="genre">
+                <option value="">Any</option>
+                <option value="Role-playing game">Role-playing game</option>
+                <option value="MMORPG">MMORPG</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Survival">Survival</option>
+                <option value="Beat 'em up">Beat 'em up</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <!-- NOTE : NEED TO FIGURE OUT RATING FILTER SYSTEM
+        <th>Rating:</th>
+        <td>
+            <select name="rating">
+                
+                <option value="">Any</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </td> --> 
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit">
+        </td>
+    </tr>
+
+</table>

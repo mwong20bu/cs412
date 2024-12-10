@@ -1,0 +1,55 @@
+<!-- game_review/templates/game_review/show_reviewer.html -->
+<!-- template to show a Reviewer's page, including their profile image, name, bio, and the reviews they've made -->
+
+{% extends 'game_review/base.html' %}
+
+{% block content %}
+<div class="reviewer">
+    {% if reviewer.profile_img %}
+        <img src="{{reviewer.profile_img.url}}" alt="{{reviewer.name}}'s Profile Pic">
+    {% else %}
+        <img src="../static/game_review-images/emptypfp.jpg" alt="Unknown">
+    {% endif %}
+
+        <div>
+            <h2>{{reviewer.name}}</h2>
+            {% if reviewer.bio %}
+                <p>{{reviewer.bio}}</p>
+            {% else %}
+                <p><em>{{reviewer.name}} has chosen to remain unknown.</em></p>
+            {% endif %}
+
+            {% if reviewer.user == request.user %}
+            <a href="{% url 'edit_reviewer' reviewer.pk %}" class="review_button">Edit Your Profile</a>
+            {% endif %}
+        </div>
+</div>
+<br>
+
+<!-- showing the reviews that this Reviewer has made, ordered by most recent date -->
+<h2>Reviews by {{reviewer.name}}</h2>
+<div>
+    {% if reviewer.get_my_reviews %}
+        {% for review in reviewer.get_my_reviews %}
+        <myreview class="my_reviews">
+            <div>
+                <p><strong><a href="{% url 'game' review.game.pk %}">{{review.game.title}}</a></strong> {{review.rating}}&#9733;</p>
+                <p><em>posted {{review.date_reviewed}}</em></p>
+                <p>{{review.content}}</p>
+                {% if review.get_images %}
+                    {% for i in review.get_images %}
+                        <img src="{{i.image_file.url}}" alt="{{i.caption}}">
+                    {% endfor %}
+                {% endif %}
+                {% if request.user == reviewer.user %}
+                <p><a class="review_button" href="{% url 'delete_review' review.pk %}">Delete</a>
+                    <a class="review_button" href="{% url 'update_review' review.pk %}">Update</a></p>
+                {% endif %}
+            </div>
+        </myreview>
+        {% endfor %}
+    {% else %}
+        <p><em>{{reviewer.name}} has no reviews yet.</em></p>
+    {% endif %}
+</div>
+{% endblock %}

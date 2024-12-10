@@ -1,0 +1,281 @@
+/* This CSS was derived from NetNinja's multi-column grid example. */
+
+body {
+    background: #2e2e2e;
+    font-family: Helvetica, sans-serif;
+}
+
+.genre img {
+    width: 175;
+    height: 200;
+    object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
+    border: 2px solid #fff;
+    border-radius: 2px;
+    float: left;
+}
+
+.genre {
+    display: grid;
+    /*grid-template-columns: repeat(2, 1fr);*/
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 70%;
+    border: 1px solid white;
+    border-radius: 2px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.my_reviews {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 70%;
+    border: 1px solid white;
+    border-radius: 2px;
+    border-image: linear-gradient(to left, grey,grey,rgb(0, 190, 0));
+    border-image-slice: 1;
+    background-color: #262626;
+    
+}
+
+myreview img {
+    width: 175;
+    height: 150;
+    object-fit: scale-down; 
+}
+
+myreview div {
+    margin: 10px;
+    padding: 0px 0px 10px 10px;
+    background-color: #262626;
+}
+
+.reviewer img {
+    width: 175;
+    height: 200;
+    object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
+    border: 2px solid #fff;
+    border-radius: 2px;
+    float: left;
+}
+
+.reviewer {
+    display: grid;
+    /*grid-template-columns: repeat(2, 1fr);*/
+    background-color: rgb(42, 42, 42);
+    grid-template-columns: min-content auto;
+    column-gap: 30px;
+    width: 90%;
+    border: 1px solid rgb(0, 190, 0);
+    border-radius: 2px;
+    margin: 10px;
+    padding: 15px;
+    align-self: center;
+}
+
+.devgame img {
+    width: 175;
+    height: 200;
+    object-fit: cover; /* sizing all images to be 200 x 250 and then making images fit those dimensions by cropping*/
+    border: 2px solid #fff;
+    border-radius: 2px;
+    float: left;
+}
+
+.devgame {
+    display: grid;
+    /*grid-template-columns: repeat(2, 1fr);*/
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 70%;
+    margin: 10px;
+    padding: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+nav li {
+    float: left;
+    list-style-type: none;
+    display: inline;
+}
+
+nav a:link, a:visited {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Helvetica, sans-serif;
+}
+
+nav a:hover {
+    color: #00dd30;
+}
+
+.logout {
+    float: left;
+    display: block;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: none; 
+    font-size: 1rem;
+}
+
+.logout:hover {
+    color:#00dd30;
+}
+
+h1, h2, h3, h4{
+    color: white;
+}
+
+p {
+    color: #dedede;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #dedede;
+}
+
+a:hover {
+    color: #00dd30;
+}
+
+header {
+    margin: 10px auto;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to top right, grey, rgb(0, 190, 0));
+    border-image-slice: 1;
+
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+     grid-gap: 10px;
+    margin: 15px auto;
+}
+.grid-container-profile-display {
+    background: #eee;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+     grid-gap: 10px;
+    max-width: 1200px;
+    margin: 15px auto;
+    place-items: center;
+}
+
+.game_images {
+    background-color: black;
+}
+
+.form_fontwhite {
+    color: white;
+    vertical-align: top;
+}
+
+.errorlist {
+    color: white;
+}
+
+.helptext {
+    color: white;
+}
+
+review img {
+    width: 175;
+    height: 150;
+    object-fit: scale-down; 
+}
+
+game img {
+    width: 175;
+    height: 200;
+    object-fit: cover; 
+    border: 2px solid #fff;
+    border-radius: 2px;
+}
+
+.game_main_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30vw;
+    object-fit: cover; 
+    border: 4px solid #fff;
+}
+
+review div {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 0px 0px 10px 10px;
+    border-image: linear-gradient(to left, grey,grey,rgb(0, 190, 0));
+    border-image-slice: 1;
+    background-color: #262626;
+}
+
+th {
+    color: white;
+}
+
+.big_button{
+    text-decoration: none;
+    background-color: #0c017f;
+    color: #e6efff;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.review_button{
+    text-decoration: none;
+    background-color: #0e0e0e;
+    border: black solid 1px;
+    color: #e6efff;
+    padding: 1px 3px;
+    margin: 10px 0px;
+}
+
+.add_button{
+    text-decoration: none;
+    background-color: #0f02a1;
+    color: #e6efff;
+    padding: 1px 2px;
+    border-radius: 3px;
+}
+
+/* responsive styles: adapt to smaller screen sizes */
+@media screen and (max-width: 980px) {
+
+    profile {
+        grid-column: span 3;
+        display: grid; /* nested grid */
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 760px) {
+
+    profile, profile.featured {
+        
+        display: block; 
+        margin: 0px 20px;
+    }
+}

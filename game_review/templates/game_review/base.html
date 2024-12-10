@@ -1,0 +1,45 @@
+<!-- game_review/templates/game_review/base.html -->
+{% load static %}
+<html>
+    <head>
+        <title>Game Review</title>
+        <link rel="stylesheet" href="{% static 'styles-game_review.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1 style="text-align: center;"><a href="{% url 'all_games'%}">Game Review</a></h1>
+        </header>
+    
+        <nav>
+            <ul>
+                <li><a href="{% url 'all_games' %}">All Games</a></li>
+                <li><a href="{% url 'search_game' %}">Search</a></li>
+
+            <!-- if user is logged in, show a link to their page, as well as link for logging out -->
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'reviewer' logged_in_reviewer.pk %}">{{logged_in_reviewer.name}}'s Page</a></li>
+            <li><form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="logout" type="submit">Logout</button>
+            </form></li>
+        
+            <!-- if user is not logged in, show links to log in and create a new account -->
+            {% else %}
+            <li><a href="{% url 'login'%}">Log in here</a></li>
+            <li><a href="{% url 'create_reviewer'%}">Create Account</a></li>
+            {% endif %}
+            </ul>
+        </nav>
+        
+        <!-- if the user is logged in, show their username, otherwise show that the user is not logged in -->
+        {% if request.user.is_authenticated %}
+            <p>Logged in as: {{request.user}}</p>
+        {% else %}
+            <p>Not logged in</p>
+        {% endif %}
+
+    {% block content %}
+    {% endblock %}    
+  
+    </body>
+</html>

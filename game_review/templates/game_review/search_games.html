@@ -1,0 +1,28 @@
+<!-- game_review/templates/game_review/search_games.html -->
+<!-- template for the game searching view -->
+
+{% extends 'game_review/base.html' %}
+{% block content %}
+<h2>Search Page</h2>
+
+<div class="row">
+    <!--importing search.html, which includes the search form / criteria -->
+    {% include 'game_review/search.html' %}
+</div>
+
+<!-- displaying the results of the search -->
+<div>
+    {% for v in games %}
+    <div class="genre">
+            <img src="{{v.main_image.url}}" alt="main image">
+            <div>
+                <strong><a href="{% url 'game' v.pk %}"> {{v.title}} ({{v.rating}}&#9733;)</a></strong> <br>
+                <a href="{% url 'developer' v.developer.pk %}"> Developed by {{v.developer}}</a>
+                <p>{{v.description}}</p>
+            </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

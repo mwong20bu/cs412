@@ -1,0 +1,12 @@
+<!-- game_review/templates/game_review/logged_out.html -->
+<!-- template for logging out view -->
+
+{% extends 'game_review/base.html' %}
+
+{% block content %}
+<h1>You have been logged out</h1>
+
+<!-- link to log back in -->
+<h3>You can log in again here:</h3>
+<a href="{% url 'login' %}" class="review_button">Login</a>
+{% endblock %}

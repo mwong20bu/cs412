@@ -1,0 +1,34 @@
+<!-- game_review/templates/game_review/developer.html -->
+<!-- template for showing a Developer's information and games they developed -->
+
+{% extends 'game_review/base.html' %}
+{% block content%}
+
+<div class="reviewer">
+    <img src="{{developer.profile_img.url}}" alt="Developer's profile image">
+    <div>
+        <h3>{{developer.name}}</h3>
+        <p>{{developer.description}}</p>
+        <p>Contact us here: {{developer.contact_info}}</p>
+        <p>Location: {{developer.location}}</p>
+    </div>
+</div>
+
+<!-- listing the games this Developer developed : shows the game's main image, title, rating, and description -->
+<div>
+    <h4>Games by {{developer.name}}: </h4>
+    {%for g in developer.get_games%}
+        <div class="devgame">
+            <img src="{{g.main_image.url}}" alt="Image of {{g.title}}">
+            <div>
+                <a href="{% url 'game' g.pk %}">{{g.title}} ({{g.rating}}&#9733;)</a>
+                <p>{{g.description}}</p>
+            </div>
+            
+        </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

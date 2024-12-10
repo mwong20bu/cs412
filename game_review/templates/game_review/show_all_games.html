@@ -1,0 +1,20 @@
+<!-- game_review/templats/game_review/show_all_games.html -->
+ <!-- template for view for showing all games -->
+{% extends 'game_review/base.html' %}
+
+{% block content %}
+
+<h2>Showing All Games</h2>
+
+<main class="grid-container"> 
+    {% for v in videogames %}
+    <game> 
+        <div> 
+            <img src="{{v.main_image.url}}" alt="main image"> <br>
+            <a href="{% url 'game' v.pk %}"> {{v.title}} ({{v.rating}}&#9733;)</a>
+        </div>
+    </game> 
+    {% endfor %}
+</main>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+<!-- game_review/templates/game_review/show_game.html-->
+<!-- template for showing detailed view of a single game -->
+
+{% extends 'game_review/base.html' %}
+
+{% block content %}
+<div>
+    <h2>{{v.title}}</h2>
+    <div class="game_images">
+        <img src="{{v.main_image.url}}" alt="Cover image for {{v.title}}" class="game_main_img">
+    </div>
+    <p>{{v.description}}</p>
+    <p>Genres: {{v.genre}}</p>
+    <!-- includes link to developer's page -->
+    <p>Developer: <a href="{% url 'developer' v.developer.pk %}">{{v.developer}}</a></p> 
+    <p>Rating: {{v.rating}} </p>
+
+    <!-- if user is logged in, they can leave a review. Otherwise, they must log in first-->
+    <strong>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'create_review' v.pk %}">Leave a Review</a>
+    {% else %}
+        <a href="{% url 'create_review' v.pk %}">Leave a Review (Login Required)</a>
+    {% endif %}
+    </strong>
+
+
+    <!-- displaying reviews for this VideoGame -->
+    {% if v.get_reviews %}
+        <div>
+            <h3>Reviews</h3>
+            {% for r in v.get_reviews %}
+                <review>
+                    <div>
+                        <p><strong><a href="{% url 'reviewer' r.reviewer.pk %}">{{r.reviewer}}</a></strong> {{r.rating}}&#9733;</p>
+                        <p><em>{{r.date_reviewed}}</em></p>
+                        <p>{{r.content}}</p>
+                        {% if r.get_images %}
+                            {% for i in r.get_images %}
+                            <!-- note: get_images returns a ReviewImage object, need to do i.image to get the Image associated with ReviewImage, and then i.image.image_file to get the image file-->
+                                <!-- <img src="{{i.image.image_file.url}}" alt="{{i.image_file.caption}}"> -->
+                                <!-- changed get_images, seems to work now? -->
+                                <img src="{{i.image_file.url}}" alt="{{i.caption}}">
+                            {% endfor %}
+                        {% endif %}
+                        
+                        <!-- option to delete / edit review if the currently logged in user is the user who left the review -->
+                        {% if request.user == r.reviewer.user %}
+                        <p><a class="review_button" href="{% url 'delete_review' r.pk %}">Delete</a>
+                        <a class="review_button" href="{% url 'update_review' r.pk %}">Update</a></p>
+                        {% endif %}
+                    </div>
+
+                </review>
+                
+            {% endfor %}
+        </div>
+    {% endif%}
+
+</div>
+
+{% endblock %}

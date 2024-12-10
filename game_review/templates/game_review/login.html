@@ -1,0 +1,16 @@
+<!-- game_review/templates/game_review/login.html -->
+<!-- template to show login form, also includes link to account creation url -->
+
+{% extends 'game_review/base.html' %}
+{% block content %}
+
+<h1>Login</h1>
+<form method="post" action="{% url 'login' %}" class="form_fontwhite" >
+    {% csrf_token %}
+    {{form}}
+    <input type="hidden" name="next" value="{% url 'all_games' %}">
+    <input type="submit" value="Login">
+</form>
+
+<p>New? Create an account <a href="{%url 'create_reviewer'%}" style="color:#00dd30">here!</a></p>
+{% endblock %}
